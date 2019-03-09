@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Profile } from '../profiles/profile.entity';
 
 export type UserStatusType = 'active' | 'suspended' | 'canceled';
@@ -17,8 +17,10 @@ export class User {
     @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
     registerDate: string;
 
-    @OneToOne(type => Profile)
-    @JoinColumn()
+    @Column({ nullable: true })
+    profileId: number;
+
+    @ManyToOne(type => Profile, profile => profile.users)
     profile: Profile;
 
     @Column({

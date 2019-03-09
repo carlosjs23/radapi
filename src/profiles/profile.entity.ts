@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { User } from 'src/users/users.entity';
 
 @Entity()
 export class Profile {
@@ -16,4 +17,7 @@ export class Profile {
 
   @Column({default: 0})
   accessPeriod: number;
+
+  @OneToMany(type => User, user => user.profile)
+  users: User[];
 }

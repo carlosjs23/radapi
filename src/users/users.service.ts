@@ -38,10 +38,10 @@ export class UserService {
         const actualUser = await this.findOne(id);
         const profile = await this.profileService.findOne(user.profileId);
 
-        actualUser.username = user.username;
-        actualUser.password = user.password;
-        actualUser.profile = profile;
-        actualUser.status = user.status;
+        if (user.username !== null || user.username !== undefined) { actualUser.username = user.username; }
+        if (user.password !== null || user.password !== undefined) { actualUser.password = user.password; }
+        if (user.profileId !== null || user.profileId !== undefined) { actualUser.profile = profile; }
+        if (user.status !== null || user.status !== undefined) {actualUser.status = user.status; }
 
         return this.userRepository.save(actualUser);
     }
