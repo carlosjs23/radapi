@@ -1,4 +1,4 @@
-import { Controller, UseInterceptors, Get, Param, ParseIntPipe, Post, Body } from '@nestjs/common';
+import { Controller, UseInterceptors, Get, Param, ParseIntPipe, Post, Body, Put, Delete } from '@nestjs/common';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { ProfileService } from './profile.service';
 import { Profile } from './profile.entity';
@@ -27,5 +27,17 @@ export class ProfilesController {
     async create(@Body() createProfileDto: CreateProfileDto) {
         console.log(`POST /profiles - ${createProfileDto}`);
         return this.profileService.create(createProfileDto);
+    }
+
+    @Put(':id')
+    async update(@Param('id', new ParseIntPipe()) id, @Body() profile: CreateProfileDto) {
+        console.log(`PUT /profiles/${id} - ${profile}`);
+        return this.profileService.update(id, profile);
+    }
+
+    @Delete(':id')
+    async delete(@Param('id', new ParseIntPipe()) id) {
+        console.log(`DELETE /profiles/${id}`);
+        return this.profileService.delete(id);
     }
 }

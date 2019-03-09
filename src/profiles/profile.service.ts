@@ -22,4 +22,19 @@ export class ProfileService {
     async create(profile: ProfileInterface) {
         return await this.profileRepository.insert(profile);
     }
+
+    async update(id: number, profile: ProfileInterface) {
+        const actualProfile = await this.findOne(id);
+
+        actualProfile.name = profile.name;
+        actualProfile.addressPool = profile.addressPool;
+        actualProfile.addressList = profile.addressList;
+        actualProfile.accessPeriod = profile.accessPeriod;
+
+        return this.profileRepository.save(actualProfile);
+    }
+
+    async delete(id: number) {
+        return this.profileRepository.delete(id);
+    }
 }
