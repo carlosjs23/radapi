@@ -30,6 +30,7 @@ export class ProfileService {
         actualProfile.addressPool = profile.addressPool;
         actualProfile.addressList = profile.addressList;
         actualProfile.accessPeriod = profile.accessPeriod;
+        actualProfile.service = profile.service;
 
         return this.profileRepository.save(actualProfile);
     }

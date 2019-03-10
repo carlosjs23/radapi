@@ -88,9 +88,9 @@ export class RadiusController {
         }
         res.set('Content-Type', 'application/JSON');
         return res.json({
-            'Session-Timeout': '60',
             'Framed-Pool': pool,
             'Mikrotik-Address-List': user.profile.addressList,
+            'Mikrotik-Group': user.profile.name,
         });
 
     }
