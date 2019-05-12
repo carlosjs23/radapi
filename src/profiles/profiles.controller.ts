@@ -24,13 +24,13 @@ export class ProfilesController {
     }
 
     @Post()
-    async create(@Body() createProfileDto: CreateProfileDto) {
+    async create(@Body() createProfileDto) {
         console.log(`POST /profiles - ${createProfileDto}`);
         return this.profileService.create(createProfileDto);
     }
 
     @Put(':id')
-    async update(@Param('id', new ParseIntPipe()) id, @Body() profile: CreateProfileDto) {
+    async update(@Param('id', new ParseIntPipe()) id, @Body() profile) {
         console.log(`PUT /profiles/${id} - ${profile}`);
         return this.profileService.update(id, profile);
     }
