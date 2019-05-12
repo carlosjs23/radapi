@@ -2,12 +2,12 @@
 A simple REST Server for the FreeRadius rlm_rest module based on node.js and Express.js Framework.
 
 ## Intro
-This is a complete working API for the rlm_rest module that enables Freeradius to authenticate via http. In this particular case I used MongoDB as the data storage, but essencialy any DB could be used. Logic for authentication is completely executed by the API. 
+This is a complete working API for the rlm_rest module that enables Freeradius to authenticate via http. In this particular case I used MySQL as the data storage, but essencialy any DB could be used. Logic for authentication is completely executed by the API. 
 
 ## Installation
 
 #### Basics
-Basicly we only need node.js, Mysql and FreeRadius.
+Basicly we only need NodeJS, NestJS, MySQL and FreeRadius.
 
 ## The API in depth
 All details, addicional info, endpoints an how the API works are described below.
@@ -15,7 +15,7 @@ All details, addicional info, endpoints an how the API works are described below
 ### What can I do with it and how it works?
 This API enables you to create and manipulate users and access profiles that can be authenticated with FreeRADIUS. It verifies information provided by the NAS to the radius server to decide if the user is authorized to authenticate and, if it's the case, passes attributes to the server (like max download speed, etc...).
 
-This API comes ready to be used in a simple ISP scenario where you can add users, upload and download speed policies. But can be expanded to cover much more by simply expanding the DB schema and authentication logic.
+This API comes ready to be used in a ISP scenario where you can add users, upload and download speed policies. But can be expanded to cover much more by simply expanding the DB schema and authentication logic.
 
 ### Endpoint
 The API has two main categories as enpoints:
